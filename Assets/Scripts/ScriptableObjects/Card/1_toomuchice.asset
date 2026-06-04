@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: 1_toomuchice
   m_EditorClassIdentifier: Assembly-CSharp::CardSO
   cardName: TooMuchIce
-  pairName: 
+  pairName: TooMuchIce2
   cardImage: {fileID: 0}

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 150dcb90b30b9d9438b3da6681457ad4, type: 3}
   m_Name: 1_myhairitdontmove
   m_EditorClassIdentifier: Assembly-CSharp::CardSO
-  cardName: 
-  pairName: 
-  cardImage: {fileID: 0}
+  cardName: hairitdontmove
+  pairName: hairitdontmove2
+  cardImage: {fileID: 7695400965131581244, guid: 041beff12cbad7143b3ebef1fbe3deb9, type: 3}

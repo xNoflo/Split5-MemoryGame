@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 150dcb90b30b9d9438b3da6681457ad4, type: 3}
   m_Name: 1_Fuckher
   m_EditorClassIdentifier: Assembly-CSharp::CardSO
-  cardName: 
-  pairName: 
-  cardImage: {fileID: 0}
+  cardName: FUCKHER
+  pairName: FUCKHER2
+  cardImage: {fileID: 5673207284224204407, guid: 7743c45b0d7a4e1439fadf974be4ac8c, type: 3}

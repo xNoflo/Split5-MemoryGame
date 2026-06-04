@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 150dcb90b30b9d9438b3da6681457ad4, type: 3}
   m_Name: 2_todaydrainedme 1
   m_EditorClassIdentifier: Assembly-CSharp::CardSO
-  cardName: 
-  pairName: 
+  cardName: todaydrainedme2
+  pairName: todaydrainedme
   cardImage: {fileID: 0}

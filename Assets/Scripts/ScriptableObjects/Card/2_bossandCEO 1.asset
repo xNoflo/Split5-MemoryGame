@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 150dcb90b30b9d9438b3da6681457ad4, type: 3}
   m_Name: 2_bossandCEO 1
   m_EditorClassIdentifier: Assembly-CSharp::CardSO
-  cardName: BossandCEO
-  pairName: 
+  cardName: BossandCEO2
+  pairName: BossandCEO
   cardImage: {fileID: -1897071058875885573, guid: babf504d002812641b48b8a5abb93d87, type: 3}

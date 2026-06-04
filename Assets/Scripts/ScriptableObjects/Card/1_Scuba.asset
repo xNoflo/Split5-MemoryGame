@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 150dcb90b30b9d9438b3da6681457ad4, type: 3}
   m_Name: 1_Scuba
   m_EditorClassIdentifier: Assembly-CSharp::CardSO
-  cardName: 
-  pairName: 
-  cardImage: {fileID: 0}
+  cardName: Scuba
+  pairName: Scuba2
+  cardImage: {fileID: -2704363116791806788, guid: 1a98ff592356b6548a650b1fa98a8d49, type: 3}

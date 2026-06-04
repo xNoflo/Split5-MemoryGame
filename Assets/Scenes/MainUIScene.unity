@@ -178,7 +178,7 @@ MonoBehaviour:
   rows: 4
   columns: 4
   spacing: {x: 0, y: 0}
-  cardSize: {x: 108.024376, y: 108.024376}
+  cardSize: {x: 52.11506, y: 52.11506}
   preferredTopPadding: 0
 --- !u!114 &75838552
 MonoBehaviour:
@@ -277,7 +277,7 @@ MonoBehaviour:
   rows: 4
   columns: 4
   spacing: {x: 0, y: 0}
-  cardSize: {x: 108.024376, y: 108.024376}
+  cardSize: {x: 52.11506, y: 52.11506}
   preferredTopPadding: 0
 --- !u!114 &104084660
 MonoBehaviour:
@@ -376,7 +376,7 @@ MonoBehaviour:
   rows: 4
   columns: 4
   spacing: {x: 0, y: 0}
-  cardSize: {x: 108.024376, y: 108.024376}
+  cardSize: {x: 52.11506, y: 52.11506}
   preferredTopPadding: 0
 --- !u!114 &128842077
 MonoBehaviour:
@@ -475,7 +475,7 @@ MonoBehaviour:
   rows: 4
   columns: 4
   spacing: {x: 0, y: 0}
-  cardSize: {x: 108.024376, y: 108.024376}
+  cardSize: {x: 52.11506, y: 52.11506}
   preferredTopPadding: 0
 --- !u!114 &140911436
 MonoBehaviour:
@@ -900,7 +900,7 @@ MonoBehaviour:
   rows: 4
   columns: 4
   spacing: {x: 0, y: 0}
-  cardSize: {x: 108.024376, y: 108.024376}
+  cardSize: {x: 52.11506, y: 52.11506}
   preferredTopPadding: 0
 --- !u!114 &285966147
 MonoBehaviour:
@@ -1136,7 +1136,7 @@ MonoBehaviour:
   rows: 4
   columns: 4
   spacing: {x: 0, y: 0}
-  cardSize: {x: 108.024376, y: 108.024376}
+  cardSize: {x: 52.11506, y: 52.11506}
   preferredTopPadding: 0
 --- !u!114 &348443926
 MonoBehaviour:
@@ -1235,7 +1235,7 @@ MonoBehaviour:
   rows: 4
   columns: 4
   spacing: {x: 0, y: 0}
-  cardSize: {x: 108.024376, y: 108.024376}
+  cardSize: {x: 52.11506, y: 52.11506}
   preferredTopPadding: 0
 --- !u!114 &452886419
 MonoBehaviour:
@@ -1334,7 +1334,7 @@ MonoBehaviour:
   rows: 4
   columns: 4
   spacing: {x: 0, y: 0}
-  cardSize: {x: 108.024376, y: 108.024376}
+  cardSize: {x: 52.11506, y: 52.11506}
   preferredTopPadding: 0
 --- !u!114 &465038709
 MonoBehaviour:
@@ -1433,7 +1433,7 @@ MonoBehaviour:
   rows: 4
   columns: 4
   spacing: {x: 0, y: 0}
-  cardSize: {x: 108.024376, y: 108.024376}
+  cardSize: {x: 52.11506, y: 52.11506}
   preferredTopPadding: 0
 --- !u!114 &483554197
 MonoBehaviour:
@@ -1532,7 +1532,7 @@ MonoBehaviour:
   rows: 4
   columns: 4
   spacing: {x: 0, y: 0}
-  cardSize: {x: 108.024376, y: 108.024376}
+  cardSize: {x: 52.11506, y: 52.11506}
   preferredTopPadding: 0
 --- !u!114 &504343664
 MonoBehaviour:
@@ -1554,7 +1554,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -1282508637239877949, guid: 5d850d8d267d74844a829c3c804f1807, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1631,7 +1631,7 @@ MonoBehaviour:
   rows: 4
   columns: 4
   spacing: {x: 0, y: 0}
-  cardSize: {x: 108.024376, y: 108.024376}
+  cardSize: {x: 52.11506, y: 52.11506}
   preferredTopPadding: 0
 --- !u!114 &592792642
 MonoBehaviour:
@@ -2108,7 +2108,7 @@ MonoBehaviour:
   rows: 4
   columns: 4
   spacing: {x: 0, y: 0}
-  cardSize: {x: 108.024376, y: 108.024376}
+  cardSize: {x: 52.11506, y: 52.11506}
   preferredTopPadding: 0
 --- !u!114 &898034496
 MonoBehaviour:
@@ -2130,7 +2130,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -1897071058875885573, guid: babf504d002812641b48b8a5abb93d87, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2207,7 +2207,7 @@ MonoBehaviour:
   rows: 4
   columns: 4
   spacing: {x: 0, y: 0}
-  cardSize: {x: 108.024376, y: 108.024376}
+  cardSize: {x: 52.11506, y: 52.11506}
   preferredTopPadding: 0
 --- !u!114 &1006752524
 MonoBehaviour:
@@ -2373,7 +2373,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardLayout
   m_Padding:
-    m_Left: -220
+    m_Left: 228
     m_Right: 0
     m_Top: 50
     m_Bottom: 50
@@ -2381,7 +2381,7 @@ MonoBehaviour:
   rows: 4
   columns: 4
   spacing: {x: 50, y: 50}
-  cardSize: {x: 432.0975, y: 432.0975}
+  cardSize: {x: 208.46024, y: 208.46024}
   preferredTopPadding: 50
 --- !u!1 &1364766800
 GameObject:
@@ -2681,7 +2681,7 @@ MonoBehaviour:
   rows: 4
   columns: 4
   spacing: {x: 0, y: 0}
-  cardSize: {x: 108.024376, y: 108.024376}
+  cardSize: {x: 52.11506, y: 52.11506}
   preferredTopPadding: 0
 --- !u!114 &1988164817
 MonoBehaviour:
@@ -2703,7 +2703,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -8645706388804419200, guid: 7a0d59395af1fba40a9fef34cca4e328, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2780,7 +2780,7 @@ MonoBehaviour:
   rows: 4
   columns: 4
   spacing: {x: 0, y: 0}
-  cardSize: {x: 108.024376, y: 108.024376}
+  cardSize: {x: 52.11506, y: 52.11506}
   preferredTopPadding: 0
 --- !u!114 &2045888522
 MonoBehaviour:
@@ -2879,7 +2879,7 @@ MonoBehaviour:
   rows: 4
   columns: 4
   spacing: {x: 0, y: 0}
-  cardSize: {x: 108.024376, y: 108.024376}
+  cardSize: {x: 52.11506, y: 52.11506}
   preferredTopPadding: 0
 --- !u!114 &2143118261
 MonoBehaviour:
@@ -2901,7 +2901,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 3281406219971619132, guid: f36ae320f1c332d4c987cab6e0c73852, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

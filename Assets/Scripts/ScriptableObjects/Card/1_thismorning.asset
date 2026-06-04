@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 150dcb90b30b9d9438b3da6681457ad4, type: 3}
   m_Name: 1_thismorning
   m_EditorClassIdentifier: Assembly-CSharp::CardSO
-  cardName: 
-  pairName: 
-  cardImage: {fileID: 0}
+  cardName: thismorning
+  pairName: thismorning2
+  cardImage: {fileID: -8645706388804419200, guid: 7a0d59395af1fba40a9fef34cca4e328, type: 3}

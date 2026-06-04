@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 150dcb90b30b9d9438b3da6681457ad4, type: 3}
   m_Name: 1_rightback
   m_EditorClassIdentifier: Assembly-CSharp::CardSO
-  cardName: 
-  pairName: 
-  cardImage: {fileID: 0}
+  cardName: RIghtBack
+  pairName: RightBack2
+  cardImage: {fileID: -1282508637239877949, guid: 5d850d8d267d74844a829c3c804f1807, type: 3}
