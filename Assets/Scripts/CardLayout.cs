@@ -16,19 +16,30 @@ public class CardLayout : LayoutGroup
 
     public override void CalculateLayoutInputVertical()
     {
-        if (rows == 0 || columns == 0){
-            rows = 4;
-            columns = 4;
+        int cardCount = rectChildren.Count;
+        if (cardCount == 0)
+        {
+            return;
+        }
+
+        if (rows <= 0 || columns <= 0 || rows * columns < cardCount)
+        {
+            columns = Mathf.CeilToInt(Mathf.Sqrt(cardCount));
+            rows = Mathf.CeilToInt((float)cardCount / columns);
         }
         float parentWidth = rectTransform.rect.width;
         float parentHeight = rectTransform.rect.height;
 
-        float cellHeight = (parentHeight - 2 * preferredTopPadding - spacing.y * (rows - 1)) / rows;
-        float cellWidth = cellHeight;
+        float availableHeight = parentHeight - 2 * preferredTopPadding - spacing.y * (rows - 1);
+        float availableWidth = parentWidth - spacing.x * (columns - 1);
 
-        cardSize = new Vector2(cellWidth, cellHeight);
-        padding.left = Mathf.FloorToInt((parentWidth - columns * cellWidth - spacing.x * (columns - 1)) / 2);
-        padding.top = Mathf.FloorToInt((parentHeight - rows * cellHeight - spacing.y * (rows - 1)) / 2);
+        float cellHeight = availableHeight / rows;
+        float cellWidth = availableWidth / columns;
+        float cellSize = Mathf.Min(cellWidth, cellHeight);
+
+        cardSize = new Vector2(cellSize, cellSize);
+        padding.left = Mathf.FloorToInt((parentWidth - columns * cellSize - spacing.x * (columns - 1)) / 2);
+        padding.top = Mathf.FloorToInt((parentHeight - rows * cellSize - spacing.y * (rows - 1)) / 2);
         padding.bottom = padding.top;
         for (int i = 0; i < rectChildren.Count; i++)
         {

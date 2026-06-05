@@ -14,4 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardSO
   cardName: hairitdontmove
   pairName: hairitdontmove2
-  cardImage: {fileID: 7695400965131581244, guid: 041beff12cbad7143b3ebef1fbe3deb9, type: 3}
+  cardImage: {fileID: 0}
+  cardImageFileName: 
+  cardVideo: {fileID: 0}
+  cardVideoFileName: my-hair-my-hair-it-dont-move.mp4

@@ -15,3 +15,6 @@ MonoBehaviour:
   cardName: RightBack2
   pairName: RightBack
   cardImage: {fileID: 0}
+  cardImageFileName: 
+  cardVideo: {fileID: 0}
+  cardVideoFileName: karlee-girl-karlee.mp4

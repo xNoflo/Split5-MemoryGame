@@ -14,4 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardSO
   cardName: todaydrainedme
   pairName: todaydrainedme2
-  cardImage: {fileID: 3281406219971619132, guid: f36ae320f1c332d4c987cab6e0c73852, type: 3}
+  cardImage: {fileID: 0}
+  cardImageFileName: 
+  cardVideo: {fileID: 0}
+  cardVideoFileName: zach-campbell-zachary-campbell.mp4

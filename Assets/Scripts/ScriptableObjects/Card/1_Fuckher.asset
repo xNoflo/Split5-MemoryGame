@@ -14,4 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardSO
   cardName: FUCKHER
   pairName: FUCKHER2
-  cardImage: {fileID: 5673207284224204407, guid: 7743c45b0d7a4e1439fadf974be4ac8c, type: 3}
+  cardImage: {fileID: 0}
+  cardImageFileName: 
+  cardVideo: {fileID: 0}
+  cardVideoFileName: billy-porter-fuck.mp4

@@ -14,4 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardSO
   cardName: Scuba
   pairName: Scuba2
-  cardImage: {fileID: -2704363116791806788, guid: 1a98ff592356b6548a650b1fa98a8d49, type: 3}
+  cardImage: {fileID: 0}
+  cardImageFileName: 
+  cardVideo: {fileID: 0}
+  cardVideoFileName: nick-wilde-zootopia.mp4

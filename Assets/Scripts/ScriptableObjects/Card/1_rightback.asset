@@ -14,4 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardSO
   cardName: RIghtBack
   pairName: RightBack2
-  cardImage: {fileID: -1282508637239877949, guid: 5d850d8d267d74844a829c3c804f1807, type: 3}
+  cardImage: {fileID: 0}
+  cardImageFileName: 
+  cardVideo: {fileID: 0}
+  cardVideoFileName: karlee-girl-karlee.mp4

@@ -14,4 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardSO
   cardName: thismorning
   pairName: thismorning2
-  cardImage: {fileID: -8645706388804419200, guid: 7a0d59395af1fba40a9fef34cca4e328, type: 3}
+  cardImage: {fileID: 0}
+  cardImageFileName: 
+  cardVideo: {fileID: 0}
+  cardVideoFileName: shocked-surprised.mp4

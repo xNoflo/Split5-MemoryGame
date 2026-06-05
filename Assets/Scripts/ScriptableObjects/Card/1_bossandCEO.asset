@@ -14,4 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardSO
   cardName: BossandCEO
   pairName: BossandCEO2
-  cardImage: {fileID: -1897071058875885573, guid: babf504d002812641b48b8a5abb93d87, type: 3}
+  cardImage: {fileID: 0}
+  cardImageFileName: 
+  cardVideo: {fileID: 0}
+  cardVideoFileName: mainlymannie-boss-and-ceo.mp4

@@ -15,3 +15,6 @@ MonoBehaviour:
   cardName: Scuba2
   pairName: Scuba
   cardImage: {fileID: 0}
+  cardImageFileName: 
+  cardVideo: {fileID: 0}
+  cardVideoFileName: nick-wilde-zootopia.mp4

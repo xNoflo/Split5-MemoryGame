@@ -15,3 +15,6 @@ MonoBehaviour:
   cardName: todaydrainedme2
   pairName: todaydrainedme
   cardImage: {fileID: 0}
+  cardImageFileName: 
+  cardVideo: {fileID: 0}
+  cardVideoFileName: zach-campbell-zachary-campbell.mp4
