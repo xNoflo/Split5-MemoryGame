@@ -16,5 +16,5 @@ MonoBehaviour:
   pairName: hairitdontmove2
   cardImage: {fileID: 0}
   cardImageFileName: 
-  cardVideo: {fileID: 0}
+  cardVideo: {fileID: 3280222254721072360, guid: 98140b4ee3e2edd40b0a5246e76b2abd, type: 3}
   cardVideoFileName: my-hair-my-hair-it-dont-move.mp4

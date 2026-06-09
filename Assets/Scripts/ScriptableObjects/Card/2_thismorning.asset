@@ -16,5 +16,5 @@ MonoBehaviour:
   pairName: thismorning
   cardImage: {fileID: 0}
   cardImageFileName: 
-  cardVideo: {fileID: 0}
+  cardVideo: {fileID: 3280222254721072360, guid: 5bd949383d8d06c4aa72d8e3c23e99c8, type: 3}
   cardVideoFileName: shocked-surprised.mp4

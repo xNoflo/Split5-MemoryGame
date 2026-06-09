@@ -8,6 +8,7 @@ using UnityEngine.Video;
 public class CardView : MonoBehaviour
 {
     private const string ImagesFolderName = "Images";
+    private const string StreamingVideosFolderName = "Videos";
     private static readonly Color HiddenCardColor = new(0.1f, 0.2f, 0.24f, 0.96f);
     private static readonly Color MatchedCardColor = new(0.22f, 0.42f, 0.27f, 1f);
     private static readonly Color CoverColor = new(0.17f, 0.4f, 0.46f, 0.96f);
@@ -216,22 +217,26 @@ public class CardView : MonoBehaviour
 
     private bool TryConfigureVideo(CardSO card)
     {
-        if (card.cardVideo != null)
+        if (!string.IsNullOrWhiteSpace(card.cardVideoFileName))
         {
-            _videoPlayer.source = VideoSource.VideoClip;
-            _videoPlayer.clip = card.cardVideo;
-        }
-        else if (!string.IsNullOrWhiteSpace(card.cardVideoFileName))
-        {
-            string videoPath = Path.Combine(Application.dataPath, ImagesFolderName, card.cardVideoFileName);
-            if (!File.Exists(videoPath))
+            string videoPath = ResolveStreamingVideoPath(card.cardVideoFileName);
+            if (string.IsNullOrWhiteSpace(videoPath))
             {
-                Debug.LogWarning($"Video file not found for card '{card.cardName}': {videoPath}", this);
                 return false;
             }
 
             _videoPlayer.source = VideoSource.Url;
-            _videoPlayer.url = new Uri(videoPath).AbsoluteUri;
+            _videoPlayer.url = videoPath;
+        }
+        else if (card.cardVideo != null)
+        {
+#if UNITY_WEBGL && !UNITY_EDITOR
+            Debug.LogWarning($"WebGL requires URL-based video playback, but '{card.cardName}' has no video file name.", this);
+            return false;
+#else
+            _videoPlayer.source = VideoSource.VideoClip;
+            _videoPlayer.clip = card.cardVideo;
+#endif
         }
         else
         {
@@ -239,6 +244,27 @@ public class CardView : MonoBehaviour
         }
 
         return true;
+    }
+
+    private string ResolveStreamingVideoPath(string videoFileName)
+    {
+        if (string.IsNullOrWhiteSpace(videoFileName))
+        {
+            return null;
+        }
+
+#if UNITY_WEBGL && !UNITY_EDITOR
+        return $"{Application.streamingAssetsPath}/{StreamingVideosFolderName}/{Uri.EscapeDataString(videoFileName)}";
+#else
+        string videoPath = Path.Combine(Application.streamingAssetsPath, StreamingVideosFolderName, videoFileName);
+        if (!File.Exists(videoPath))
+        {
+            Debug.LogWarning($"Video file not found for card '{gameObject.name}': {videoPath}", this);
+            return null;
+        }
+
+        return new Uri(videoPath).AbsoluteUri;
+#endif
     }
 
     private void OnVideoPrepared(VideoPlayer source)

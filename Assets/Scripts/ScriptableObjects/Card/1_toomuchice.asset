@@ -16,5 +16,5 @@ MonoBehaviour:
   pairName: TooMuchIce2
   cardImage: {fileID: 0}
   cardImageFileName: 
-  cardVideo: {fileID: 0}
+  cardVideo: {fileID: 3280222254721072360, guid: a9df58bb7c4c87e43bee43eb8700fee6, type: 3}
   cardVideoFileName: jayylaurent-too-much-ice.mp4

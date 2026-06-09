@@ -16,5 +16,5 @@ MonoBehaviour:
   pairName: todaydrainedme
   cardImage: {fileID: 0}
   cardImageFileName: 
-  cardVideo: {fileID: 0}
+  cardVideo: {fileID: 3280222254721072360, guid: eaa59e59817483347ab4bd401a96e76a, type: 3}
   cardVideoFileName: zach-campbell-zachary-campbell.mp4

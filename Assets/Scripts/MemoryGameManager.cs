@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Video;
 
 public class MemoryGameManager : MonoBehaviour
 {
@@ -372,12 +373,12 @@ public class MemoryGameManager : MonoBehaviour
 
     private void AddImageEntry(string baseName, string imageFileName)
     {
-        _allMediaEntries.Add(new MediaEntry(baseName, imageFileName, null));
+        _allMediaEntries.Add(new MediaEntry(baseName, null, imageFileName, null, null));
     }
 
     private void AddVideoEntry(string baseName, string videoFileName)
     {
-        _allMediaEntries.Add(new MediaEntry(baseName, null, videoFileName));
+        _allMediaEntries.Add(new MediaEntry(baseName, null, null, null, videoFileName));
     }
 
     private static CardSO CreateRoundCard(MediaEntry mediaEntry, bool secondCard)
@@ -387,7 +388,9 @@ public class MemoryGameManager : MonoBehaviour
         string otherSuffix = secondCard ? "1" : "2";
         card.cardName = $"{mediaEntry.Id}_{suffix}";
         card.pairName = $"{mediaEntry.Id}_{otherSuffix}";
+        card.cardImage = mediaEntry.Image;
         card.cardImageFileName = mediaEntry.ImageFileName;
+        card.cardVideo = mediaEntry.Video;
         card.cardVideoFileName = mediaEntry.VideoFileName;
         return card;
     }
@@ -415,7 +418,7 @@ public class MemoryGameManager : MonoBehaviour
         }
 
         string id = DeriveBaseId(card.cardName, card.pairName, imageFile, videoFile);
-        return new MediaEntry(id, imageFile, videoFile);
+        return new MediaEntry(id, card.cardImage, imageFile, card.cardVideo, videoFile);
     }
 
     private static bool IsMatch(CardSO first, CardSO second)
@@ -523,15 +526,19 @@ public class MemoryGameManager : MonoBehaviour
 
     private sealed class MediaEntry
     {
-        public MediaEntry(string id, string imageFileName, string videoFileName)
+        public MediaEntry(string id, Sprite image, string imageFileName, VideoClip video, string videoFileName)
         {
             Id = NormalizeCardId(id);
+            Image = image;
             ImageFileName = imageFileName;
+            Video = video;
             VideoFileName = videoFileName;
         }
 
         public string Id { get; }
+        public Sprite Image { get; }
         public string ImageFileName { get; }
+        public VideoClip Video { get; }
         public string VideoFileName { get; }
         public string Key => !string.IsNullOrWhiteSpace(VideoFileName)
             ? $"video:{NormalizeCardId(VideoFileName)}"
