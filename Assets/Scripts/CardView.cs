@@ -8,6 +8,9 @@ using UnityEngine.Video;
 public class CardView : MonoBehaviour
 {
     private const string ImagesFolderName = "Images";
+    private static readonly Color HiddenCardColor = new(0.1f, 0.2f, 0.24f, 0.96f);
+    private static readonly Color MatchedCardColor = new(0.22f, 0.42f, 0.27f, 1f);
+    private static readonly Color CoverColor = new(0.17f, 0.4f, 0.46f, 0.96f);
 
     private Image _backgroundImage;
     private Button _button;
@@ -19,6 +22,9 @@ public class CardView : MonoBehaviour
 
     private Sprite _runtimeSprite;
     private bool _isVideoPrepared;
+    private bool _isVideoPlayable;
+    private bool _hasVideoSource;
+    private bool _hasRequestedPrepare;
 
     public CardSO CardData { get; private set; }
     public bool IsRevealed { get; private set; }
@@ -63,9 +69,12 @@ public class CardView : MonoBehaviour
         IsMatched = false;
         IsRevealed = false;
         _isVideoPrepared = false;
+        _isVideoPlayable = false;
+        _hasVideoSource = false;
+        _hasRequestedPrepare = false;
 
         gameObject.name = card != null ? card.cardName : "Card";
-        _backgroundImage.color = new Color(0.09f, 0.11f, 0.18f, 1f);
+        _backgroundImage.color = HiddenCardColor;
         _cardImage.enabled = false;
         _cardImage.sprite = null;
         _videoImage.enabled = false;
@@ -83,7 +92,7 @@ public class CardView : MonoBehaviour
             return;
         }
 
-        TryConfigureVideo(card);
+        _hasVideoSource = TryConfigureVideo(card);
 
         Sprite spriteToShow = card.cardImage != null ? card.cardImage : LoadSpriteFromFile(card.cardImageFileName);
         if (spriteToShow != null)
@@ -107,9 +116,11 @@ public class CardView : MonoBehaviour
         _cardImage.enabled = _cardImage.sprite != null;
         _videoImage.enabled = _isVideoPrepared && _videoImage.texture != null;
 
+        EnsureVideoPreparation();
+
         if (_isVideoPrepared)
         {
-            _videoPlayer.Play();
+            PlayPreparedVideoFromStart();
         }
     }
 
@@ -125,7 +136,10 @@ public class CardView : MonoBehaviour
         _videoImage.enabled = false;
         _coverImage.enabled = true;
         _coverLabel.enabled = true;
-        _videoPlayer.Pause();
+        StopVideoPlayback();
+        _isVideoPrepared = false;
+        _isVideoPlayable = false;
+        _hasRequestedPrepare = false;
     }
 
     public void MarkMatched()
@@ -135,11 +149,13 @@ public class CardView : MonoBehaviour
         _button.interactable = false;
         _coverImage.enabled = false;
         _coverLabel.enabled = false;
-        _backgroundImage.color = new Color(0.14f, 0.32f, 0.2f, 1f);
+        _backgroundImage.color = MatchedCardColor;
+
+        EnsureVideoPreparation();
 
         if (_isVideoPrepared)
         {
-            _videoPlayer.Play();
+            PlayPreparedVideoFromStart();
         }
     }
 
@@ -154,15 +170,15 @@ public class CardView : MonoBehaviour
     private void ConfigureVisuals(TMP_FontAsset fontAsset)
     {
         _backgroundImage.raycastTarget = true;
-        _backgroundImage.color = new Color(0.09f, 0.11f, 0.18f, 1f);
+        _backgroundImage.color = HiddenCardColor;
 
         _button.targetGraphic = _backgroundImage;
         _button.onClick.RemoveAllListeners();
         _button.onClick.AddListener(OnClicked);
         ColorBlock colors = _button.colors;
         colors.normalColor = Color.white;
-        colors.highlightedColor = new Color(0.95f, 0.95f, 0.95f, 1f);
-        colors.pressedColor = new Color(0.8f, 0.8f, 0.8f, 1f);
+        colors.highlightedColor = new Color(0.88f, 0.97f, 0.98f, 1f);
+        colors.pressedColor = new Color(0.74f, 0.86f, 0.9f, 1f);
         _button.colors = colors;
 
         _cardImage.preserveAspect = true;
@@ -170,13 +186,13 @@ public class CardView : MonoBehaviour
 
         _videoImage.raycastTarget = false;
 
-        _coverImage.color = new Color(0.33f, 0.19f, 0.56f, 1f);
+        _coverImage.color = CoverColor;
         _coverImage.raycastTarget = false;
 
         _coverLabel.text = "?";
         _coverLabel.alignment = TextAlignmentOptions.Center;
         _coverLabel.fontSize = 56f;
-        _coverLabel.color = Color.white;
+        _coverLabel.color = new Color(0.93f, 0.99f, 0.98f, 1f);
         _coverLabel.raycastTarget = false;
         if (fontAsset != null)
         {
@@ -189,8 +205,13 @@ public class CardView : MonoBehaviour
         _videoPlayer.skipOnDrop = true;
         _videoPlayer.audioOutputMode = VideoAudioOutputMode.None;
         _videoPlayer.renderMode = VideoRenderMode.APIOnly;
+        _videoPlayer.sendFrameReadyEvents = true;
         _videoPlayer.prepareCompleted -= OnVideoPrepared;
         _videoPlayer.prepareCompleted += OnVideoPrepared;
+        _videoPlayer.frameReady -= OnVideoFrameReady;
+        _videoPlayer.frameReady += OnVideoFrameReady;
+        _videoPlayer.errorReceived -= OnVideoErrorReceived;
+        _videoPlayer.errorReceived += OnVideoErrorReceived;
     }
 
     private bool TryConfigureVideo(CardSO card)
@@ -217,19 +238,87 @@ public class CardView : MonoBehaviour
             return false;
         }
 
-        _videoPlayer.Prepare();
         return true;
     }
 
     private void OnVideoPrepared(VideoPlayer source)
     {
         _isVideoPrepared = true;
-        _videoImage.texture = source.texture;
-        _videoImage.enabled = IsRevealed && source.texture != null;
+        SyncVideoTexture(source);
 
         if (IsRevealed)
         {
-            source.Play();
+            PlayPreparedVideoFromStart();
+        }
+    }
+
+    private void OnVideoFrameReady(VideoPlayer source, long frameIdx)
+    {
+        if (_isVideoPlayable)
+        {
+            return;
+        }
+
+        SyncVideoTexture(source);
+    }
+
+    private void OnVideoErrorReceived(VideoPlayer source, string message)
+    {
+        _isVideoPrepared = false;
+        _isVideoPlayable = false;
+        _hasRequestedPrepare = false;
+        _videoImage.enabled = false;
+        Debug.LogWarning($"Video playback failed for '{gameObject.name}': {message}", this);
+    }
+
+    private void SyncVideoTexture(VideoPlayer source)
+    {
+        if (source == null || source.texture == null)
+        {
+            return;
+        }
+
+        _videoImage.texture = source.texture;
+        _videoImage.enabled = IsRevealed;
+        _isVideoPlayable = true;
+    }
+
+    private void EnsureVideoPreparation()
+    {
+        if (!_hasVideoSource || _hasRequestedPrepare || _isVideoPrepared)
+        {
+            return;
+        }
+
+        _hasRequestedPrepare = true;
+        _videoPlayer.Prepare();
+    }
+
+    private void PlayPreparedVideoFromStart()
+    {
+        if (_videoPlayer == null || !_isVideoPrepared)
+        {
+            return;
+        }
+
+        if (_videoPlayer.canSetTime)
+        {
+            _videoPlayer.time = 0d;
+        }
+
+        _videoPlayer.Play();
+    }
+
+    private void StopVideoPlayback()
+    {
+        if (_videoPlayer == null)
+        {
+            return;
+        }
+
+        if (_videoPlayer.isPlaying || _videoPlayer.isPrepared)
+        {
+            _videoPlayer.Stop();
         }
     }
 
@@ -315,6 +404,13 @@ public class CardView : MonoBehaviour
 
     private void OnDestroy()
     {
+        if (_videoPlayer != null)
+        {
+            _videoPlayer.prepareCompleted -= OnVideoPrepared;
+            _videoPlayer.frameReady -= OnVideoFrameReady;
+            _videoPlayer.errorReceived -= OnVideoErrorReceived;
+        }
+
         ReleaseRuntimeSprite();
     }
 

@@ -81,6 +81,7 @@ public class MemoryGameManager : MonoBehaviour
         EnsurePlayableCardData();
         ValidatePlayableMediaPool();
         _uiManager.Initialize(this);
+        _fontAsset = _uiManager.ActiveFont != null ? _uiManager.ActiveFont : _fontAsset;
         gridParent = _uiManager.BoardRoot;
         ClearExistingCards();
         _uiManager.ShowMainMenu();
